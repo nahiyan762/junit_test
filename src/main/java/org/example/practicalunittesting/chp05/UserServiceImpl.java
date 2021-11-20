@@ -1,24 +1,18 @@
 package org.example.practicalunittesting.chp05;
 
-/**
- * Practical Unit Testing with JUnit and Mockito - source code for exercises.
- * Visit http://practicalunittesting.com for more information.
- *
- * @author Tomek Kaczanowski
- */
 public class UserServiceImpl {
 
-	private UserDAO userDAO;
-	private SecurityService securityService;
+	private IUserDAO IUserDAO;
+	private ISecurityService ISecurityService;
 
-	public void assignPassword(User user) throws Exception {
-		String passwordMd5 = securityService.md5(user.getPassword());
-		user.setPassword(passwordMd5);
-		userDAO.updateUser(user);
+	public void assignPassword(IUser IUser) throws IllegalArgumentException {
+		String passwordMd5 = ISecurityService.md5(IUser.getPassword());
+		IUser.setPassword(passwordMd5);
+		IUserDAO.updateUser(IUser);
 	}
 
-	public UserServiceImpl(UserDAO dao, SecurityService security) {
-		this.userDAO = dao;
-		this.securityService = security;
+	public UserServiceImpl(IUserDAO dao, ISecurityService security) {
+		this.IUserDAO = dao;
+		this.ISecurityService = security;
 	}
 }

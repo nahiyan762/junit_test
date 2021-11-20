@@ -1,13 +1,25 @@
 package org.example.practicalunittesting.chp05;
 
-/**
- * Practical Unit Testing with JUnit and Mockito - source code for exercises.
- * Visit http://practicalunittesting.com for more information.
- *
- * @author Tomek Kaczanowski
- */
-public interface User {
-	String getPassword();
+public class User implements IUser{
+    private String passwordMd5;
+    private final int userId;
 
-	void setPassword(String passwordMd5);
+    public User(int userId) {
+        this.userId = userId;
+    }
+
+    @Override
+    public int getUserId() {
+        return userId;
+    }
+
+    @Override
+    public String getPassword() {
+        return passwordMd5;
+    }
+
+    @Override
+    public void setPassword(String passwordMd5) {
+        this.passwordMd5 = passwordMd5;
+    }
 }

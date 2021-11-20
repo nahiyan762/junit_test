@@ -1,11 +1,23 @@
 package org.example.practicalunittesting.chp05;
 
-/**
- * Practical Unit Testing with JUnit and Mockito - source code for exercises.
- * Visit http://practicalunittesting.com for more information.
- *
- * @author Tomek Kaczanowski
- */
-public interface UserDAO {
-	void updateUser(User user);
+import java.util.HashMap;
+import java.util.Map;
+
+public class UserDAO implements IUserDAO{
+
+    Map<Integer, IUser> users = new HashMap<>();
+
+    @Override
+    public void updateUser(IUser user) {
+        if (users.get(user.getUserId()) != null) {
+            users.replace(user.getUserId(), user);
+        } else {
+            throw new IllegalArgumentException("User not found!");
+        }
+    }
+
+    @Override
+    public void insetUser(IUser user) {
+        users.put(user.getUserId(), user);
+    }
 }
