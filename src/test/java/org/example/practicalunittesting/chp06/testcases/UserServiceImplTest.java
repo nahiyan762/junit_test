@@ -1,6 +1,7 @@
 package org.example.practicalunittesting.chp06.testcases;
 
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -18,7 +19,8 @@ class UserServiceImplTest {
 
     @Mock
     UserDAO userDAO;
-
+    @Mock
+    User user;
     @Mock
     SecurityService securityService;
 
@@ -29,7 +31,8 @@ class UserServiceImplTest {
 
     @Test
     public void getTest() {
-        when(securityService.md5(anyString())).thenReturn("");
+        String password = securityService.md5("abc");
+
     }
 
 

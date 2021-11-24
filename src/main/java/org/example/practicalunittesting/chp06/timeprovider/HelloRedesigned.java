@@ -10,7 +10,7 @@ import java.util.Calendar;
  */
 public class HelloRedesigned {
 
-	private TimeProvider timeProvider;
+	private final TimeProvider timeProvider;
 
 	public HelloRedesigned(TimeProvider timeProvider) {
 			this.timeProvider = timeProvider;
